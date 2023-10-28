@@ -9,6 +9,9 @@ import java.util.List;
 
 public class SchemaGeneration {
 
+
+
+
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("AlgaWorksPU");
 
@@ -18,7 +21,7 @@ public class SchemaGeneration {
         //ery(Empresa, Empresa.class).getResultList();
 
 
-        System.out.println(lista);
+        System.out.println("Lista de Empresas: " + lista);
 
         em.close();
         emf.close();

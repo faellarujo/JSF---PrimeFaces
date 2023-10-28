@@ -20,6 +20,14 @@ public class Empresa implements Serializable {
     @Column(nullable = false, length = 30)
     private TipoEmpresa tipo;
 
+    public TipoEmpresa getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoEmpresa tipo) {
+        this.tipo = tipo;
+    }
+
     @Column(name = "razao_social", nullable = false, length = 120)
     private String razaoSocial;
 
