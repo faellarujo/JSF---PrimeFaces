@@ -27,7 +27,7 @@ public class Empresa implements Serializable {
     private String cnpj;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "data_funcacao")
+    @Column(name = "data_fundacao")
     private Date dateFundacao;
 
 
