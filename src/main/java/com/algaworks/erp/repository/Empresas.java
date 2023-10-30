@@ -1,6 +1,7 @@
 package com.algaworks.erp.repository;
 
 import com.algaworks.erp.model.Empresa;
+import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 public class Empresas implements Serializable {
 
-
+    @Inject
     private EntityManager manager;
 
     public EntityManager getManager() {

@@ -23,6 +23,7 @@ public class CamadaPersistencia {
         RamoAtividades ramoAtividades = new RamoAtividades(em);
         Empresas empresas = new Empresas(em);
 
+
         // Buscando as informações do banco
         List<RamoAtividade> listaDeRamoAtividades = ramoAtividades.pesquisar("");
         List<Empresa> listaDeEmpresas = empresas.pesquisar("");
