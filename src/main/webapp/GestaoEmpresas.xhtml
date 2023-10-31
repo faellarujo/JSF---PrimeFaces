@@ -14,18 +14,66 @@
 
 <h:head></h:head>
 
-    <body>
+    <h:body>
         <header>
             <h:graphicImage library="algaworks" name="logo.png"></h:graphicImage>
         </header>
 
+        <div id="conteudo">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Razao social: " for="razaoSocial"></h:outputLabel>
+                    <h:inputText id="razaoSocial"></h:inputText>
 
-        <h:outputLabel value="Hello, world"/>
+                    <h:outputLabel value="Nome Fantasia: " for="nomeFantasia"></h:outputLabel>
+                    <h:inputText id="nomeFantasia"></h:inputText>
+
+                    <h:outputLabel value="Tipo Empresa" for="tipo"></h:outputLabel>
+
+                    <h:selectManyMenu id="tipo">
+                        <f:selectItem itemLabel="Selecione..."></f:selectItem>
+                        <f:selectItem itemLabel="MEI" itemValue="MEI"></f:selectItem>
+                        <f:selectItem itemLabel="LTDA" itemValue="LTDA"></f:selectItem>
+                    </h:selectManyMenu>
+                    <h:outputLabel></h:outputLabel>
+
+                    <h:commandButton value="Salvar"></h:commandButton>
+                </h:panelGrid>
+
+
+                <h:dataTable value="#{[0,0,0,0]}">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Razao Social"></h:outputText>
+                        </f:facet>
+
+                        <h:outputText value="AlgaWorks Softwares, Treinamentos LTDA"> </h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nome Fantasia"></h:outputText>
+                        </f:facet>
+
+                        <h:outputText value="AlgaWorks"> </h:outputText>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Tipo Empresa"></h:outputText>
+                            </f:facet>
+
+                            <h:outputText value="LTDA"> </h:outputText>
+                        </h:column>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </div>
+
 
         <footer>
             Curso Online "JSF e PrimeFaces Essencial"
         </footer>
 
-   </body>
+   </h:body>
 
 </html>
