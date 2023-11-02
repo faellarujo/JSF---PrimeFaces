@@ -21,28 +21,44 @@
 
         <div id="conteu do">
             <h:form>
-
-
                 <h:panelGrid columns="2">
+
                     <h:outputLabel value="Razao social: " for="razaoSocial"></h:outputLabel>
-                    <h:inputText id="razaoSocial" value="#{gestaoEmpresasBean.empresa.razaoSocial}"></h:inputText>
+                    <h:panelGroup>
+                        <h:inputText id="razaoSocial" value="#{gestaoEmpresasBean.empresa.razaoSocial}" required="true"
+                            label="Razao Social"></h:inputText>
+                        <h:message for="razaoSocial"></h:message>
+                    </h:panelGroup>
 
                     <h:outputLabel value="Nome Fantasia: " for="nomeFantasia"></h:outputLabel>
-                    <h:inputText id="nomeFantasia" value="#{gestaoEmpresasBean.empresa.nomeFantasia}"></h:inputText>
+                    <h:panelGroup>
+                       <h:inputText id="nomeFantasia" value="#{gestaoEmpresasBean.empresa.nomeFantasia}" required="true"
+                            label="Nome Fantasia"></h:inputText>
+                       <h:message for="nomeFantasia"></h:message>
+                    </h:panelGroup>
 
                     <h:outputLabel value="Tipo Empresa" for="tipo"></h:outputLabel>
+                        <h:panelGroup>
+                            <h:selectOneMenu id="tipo" value="#{gestaoEmpresasBean.empresa.tipo}" required="true">
+                                <f:selectItem itemLabel="Selecione..."></f:selectItem>
+                                <f:selectItems value="#{gestaoEmpresasBean.tipoEmpresa}"
+                                    var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}"
+                                    itemValue="#{tipoEmpresa}"></f:selectItems>
+                            </h:selectOneMenu>
+                                <h:message for="tipo"></h:message>
+                        </h:panelGroup>
 
-                    <h:selectOneMenu id="tipo" value="#{gestaoEmpresasBean.empresa.tipo}">
-
-                        <f:selectItem itemLabel="Selecione..."></f:selectItem>
-                        <f:selectItems value="#{gestaoEmpresasBean.tipoEmpresa}"
-                                       var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}"
-                                       itemValue="#{tipoEmpresa}"></f:selectItems>
-                    </h:selectOneMenu>
+                    <h:outputLabel value="CNPJ: " for="cnpj"></h:outputLabel>
+                    <h:panelGroup>
+                        <h:inputText id="cnpj" value="#{gestaoEmpresasBean.empresa.cnpj}" required="true"
+                                     label="CNPJ">
+                                <f:validateLength minimum="18" maximum="18"></f:validateLength>
+                        </h:inputText>
+                        <h:message for="cnpj"></h:message>
+                    </h:panelGroup>
 
 
                     <h:outputLabel value="Data Fundação: " for="dataFundacao"></h:outputLabel>
-
                     <h:panelGroup>
                         <h:inputText id="dataFundacao" value="#{gestaoEmpresasBean.empresa.dateFundacao}"
                             label="Data Fundação">
@@ -57,9 +73,10 @@
                     <h:panelGroup>
                         <h:inputText id="faturamento" value="#{gestaoEmpresasBean.empresa.faturamento}"
                             label="Faturamento">
-                            <f:convertNumber type="number"></f:convertNumber>
+                            <f:convertNumber pattern="#,##0.00"></f:convertNumber>
+                            <f:validateDoubleRange minimum="0"></f:validateDoubleRange>
                         </h:inputText>
-                        <h:message for="currency" ></h:message>
+                        <h:message for="Faturamento" ></h:message>
                     </h:panelGroup>
 
 
