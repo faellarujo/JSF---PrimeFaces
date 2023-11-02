@@ -38,8 +38,32 @@
                         <f:selectItems value="#{gestaoEmpresasBean.tipoEmpresa}"
                                        var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}"
                                        itemValue="#{tipoEmpresa}"></f:selectItems>
-
                     </h:selectOneMenu>
+
+
+                    <h:outputLabel value="Data Fundação: " for="dataFundacao"></h:outputLabel>
+
+                    <h:panelGroup>
+                        <h:inputText id="dataFundacao" value="#{gestaoEmpresasBean.empresa.dateFundacao}"
+                            label="Data Fundação">
+                            <f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+                        </h:inputText>
+                        <h:message for="dataFundacao" ></h:message>
+                    </h:panelGroup>
+
+
+
+                    <h:outputLabel value="Faturamento" for="faturamento"></h:outputLabel>
+                    <h:panelGroup>
+                        <h:inputText id="faturamento" value="#{gestaoEmpresasBean.empresa.faturamento}"
+                            label="Faturamento">
+                            <f:convertNumber type="number"></f:convertNumber>
+                        </h:inputText>
+                        <h:message for="currency" ></h:message>
+                    </h:panelGroup>
+
+
+
                     <h:outputLabel></h:outputLabel>
 
 
@@ -74,7 +98,7 @@
 
                <h:outputText value="#{gestaoEmpresasBean.numero}"></h:outputText><br/>
 
-                <h:commandButton value="Ajuda" action="Ajuda"></h:commandButton>
+               <h:commandButton value="Ajuda" action="Ajuda?faces-redirect=true"></h:commandButton>
 
 
 
