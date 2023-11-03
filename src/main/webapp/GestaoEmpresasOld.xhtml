@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+<title>Gestão Empresas</title>
+
+<h:outputStylesheet library="algaworks" name="estilo.css"></h:outputStylesheet>
+
+<h:head></h:head>
+
+<h:body>
+    <header>
+        <p:graphicImage library="algaworks" name="logo.png"></p:graphicImage>
+    </header>
+
+
+
+    <h:form id="myform">
+        <h:panelGrid columns="2">
+
+            <p:outputLabel value="Razao Social: " for="razaoSocial"></p:outputLabel>
+            <h:panelGroup>
+                <p:inputText id="razaoSocial" value="#{gestaoEmpresasBean.empresa.razaoSocial}" required="true"
+                             label="Razao Social"></p:inputText>
+                <p:message for="razaoSocial"></p:message>
+            </h:panelGroup>
+
+            <p:outputLabel value="Nome Fantasia: " for="nomeFantasia"></p:outputLabel>
+            <h:panelGroup>
+                <p:inputText id="nomeFantasia" value="#{gestaoEmpresasBean.empresa.nomeFantasia}" required="true"
+                             label="Nome Fantasia"></p:inputText>
+                <p:message for="nomeFantasia"></p:message>
+            </h:panelGroup>
+
+            <p:outputLabel value="Tipo Empresa" for="tipo"></p:outputLabel>
+            <h:panelGroup>
+                <p:selectOneMenu id="tipo" value="#{gestaoEmpresasBean.empresa.tipo}" required="true">
+                    <f:selectItem itemLabel="Selecione..."></f:selectItem>
+                    <f:selectItems value="#{gestaoEmpresasBean.tipoEmpresa}"
+                                   var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}"
+                                   itemValue="#{tipoEmpresa}"></f:selectItems>
+                </p:selectOneMenu>
+                <p:message for="tipo"></p:message>
+            </h:panelGroup>
+
+            <p:outputLabel value="CNPJ: " for="cnpj"></p:outputLabel>
+            <h:panelGroup>
+                <p:inputText id="cnpj" value="#{gestaoEmpresasBean.empresa.cnpj}" required="true"
+                             label="CNPJ">
+                    <f:validateLength minimum="18" maximum="18"></f:validateLength>
+                </p:inputText>
+                <p:message for="cnpj"></p:message>
+            </h:panelGroup>
+
+
+            <p:outputLabel value="Data Fundação: " for="dataFundacao"></p:outputLabel>
+            <h:panelGroup>
+                <p:inputText id="dataFundacao" value="#{gestaoEmpresasBean.empresa.dateFundacao}"
+                             label="Data Fundação">
+                    <f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+                </p:inputText>
+                <p:message for="dataFundacao"></p:message>
+            </h:panelGroup>
+
+
+            <p:outputLabel value="Faturamento" for="faturamento"></p:outputLabel>
+            <h:panelGroup>
+                <p:inputText id="faturamento" value="#{gestaoEmpresasBean.empresa.faturamento}"
+                             label="Faturamento">
+                    <f:convertNumber pattern="#,##0.00"></f:convertNumber>
+                    <f:validateDoubleRange minimum="0.0"></f:validateDoubleRange>
+                </p:inputText>
+                <p:message for="faturamento"></p:message>
+            </h:panelGroup>
+
+            <h:outputLabel></h:outputLabel>
+
+            <p:commandButton value="Salvar" actionListener="#{gestaoEmpresasBean.salvar()}" update="@form"></p:commandButton>
+
+           <h:outputLabel></h:outputLabel>
+
+
+           <h:form id="mylink">
+               <h:commandLink value="Ajuda" actionListener="#{gestaoEmpresasBean.ajuda()}"></h:commandLink>
+           </h:form>
+
+        </h:panelGrid>
+
+        <p:dataTable value="#{[0,0,0,0]}" lazy="false">
+            <p:column headerText="Razão social">
+                <h:outputText value="AlgaWorks Softwares, Treinamentos LDTA"/>
+            </p:column>
+
+            <p:column headerText="Nome fantasia">
+                <h:outputText value="AlgaWorks"/>
+            </p:column>
+
+            <p:column headerText="Tipo Emprsa">
+                <h:outputText value="LDTA"/>
+            </p:column>
+        </p:dataTable>
+
+    </h:form>
+
+
+
+
+    <footer>
+        Curso Online "JSF e PrimeFaces Essencial"
+    </footer>
+
+</h:body>
+
+</html>
