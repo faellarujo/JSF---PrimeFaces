@@ -37,6 +37,10 @@ public class GestaoEmpresasBean implements Serializable {
         return numero;
     }
 
+    public String ajuda(){
+        return "Ajuda";
+    }
+
 
     public void salvar(){
         System.out.println("Razao Social: " + empresa.getRazaoSocial()
