@@ -7,21 +7,52 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+<h:head>
+    <title>Gestão Empresas</title>
 
-<title>Gestão Empresas</title>
+    <h:outputStylesheet library="algaworks" name="estilo.css"></h:outputStylesheet>
 
-<h:outputStylesheet library="algaworks" name="estilo.css"></h:outputStylesheet>
+</h:head>
 
-<h:head></h:head>
+<f:metadata>
+    <f:viewAction action="#{gestaoEmpresasBean.todasEmpresas()}"></f:viewAction>
+</f:metadata>
 
 <h:body>
     <header>
         <p:graphicImage library="algaworks" name="logo.png"></p:graphicImage>
     </header>
 
-    <footer>
-        Curso Online "JSF e PrimeFaces Essencial"
-    </footer>
+    <h2>Cadastro de Empresas</h2>
+
+
+    <div id="conteudo">
+
+        <h:form>
+            <p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
+                         var="empresa" emptyMessage="Nenhuma Inforação a ser exibida">
+                <p:column headerText="Razão Social">
+                    <h:outputText value="#{empresa.razaoSocial}"></h:outputText>
+                </p:column>
+                <p:column headerText="Nome Fantasia">
+                    <h:outputText value="#{empresa.nomeFantasia}"></h:outputText>
+                </p:column>
+                <p:column headerText="Tipo Empresa">
+                    <h:outputText value="#{empresa.tipo}"></h:outputText>
+                </p:column>
+                <p:column headerText="Ramo Atividade">
+                    <h:outputText value="#{empresa.ramoAtividade.descricao}"></h:outputText>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+    </div>
+
+
+
+    <body>
+
+    </body>
 
 </h:body>
 

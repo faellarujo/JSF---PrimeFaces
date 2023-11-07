@@ -5,7 +5,12 @@
              version="2.1">
 
     <persistence-unit name="AlgaWorksPU">
-        <!-- <jta-data-source>jdbc/MinhaFonteDeDados</jta-data-source> -->
+
+        <!-- Entidades mapeadas -->
+        <class>com.algaworks.erp.model.Empresa</class>
+        <class>com.algaworks.erp.model.RamoAtividade</class>
+        <class>com.algaworks.erp.model.TipoEmpresa</class>
+
         <properties>
             <!-- Configurações do provedor de persistência, por exemplo, Hibernate -->
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/cursojsfprimefaces"/>
@@ -20,6 +25,8 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+
 
         </properties>
     </persistence-unit>
