@@ -34,7 +34,8 @@
                         <span class="ui-separator"></span>
 
                         <p:commandButton type="button" value="Nova" icon="pi pi-file" styleClass="rounded-button"
-                                         style="margin-right: 10px"/>
+                                         style="margin-right: 10px"
+                                         onclick="PF('EmpresaDialogWidgetVar').show()"/>
 
                         <i class="pi pi-bars px-1" style="margin-right: 10px"/>
 
@@ -77,6 +78,13 @@
                     <h:outputText value="#{empresa.ramoAtividade.descricao}"></h:outputText>
                 </p:column>
             </p:dataTable>
+
+
+
+
+            <p:dialog header="Nova Empresa" widgetVar="EmpresaDialogWidgetVar" modal="true" resizable="false" closeOnEscape="true">
+                <p:commandButton value="Teste"></p:commandButton>
+            </p:dialog>
         </h:form>
     </div>
     <body>
