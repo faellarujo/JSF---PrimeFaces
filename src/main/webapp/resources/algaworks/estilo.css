@@ -34,3 +34,8 @@ h1 {
     margin: 0px;
     margin-bottom: 10px
 }
+
+
+.minha-tabela {
+    border: 1px solid #cccccc; /* Adapte a cor e a largura da borda conforme necessário */
+}
