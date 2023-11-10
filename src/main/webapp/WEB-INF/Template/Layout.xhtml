@@ -16,21 +16,25 @@
 
 
 <h:body>
-    <header>
-        <p:graphicImage library="algaworks" name="logo.png"></p:graphicImage>
-    </header>
+    <f:view>
 
-    <h2>
-        <ui:insert name="titulo"></ui:insert>
-    </h2>
+        <header>
+            <p:graphicImage library="algaworks" name="logo.png"></p:graphicImage>
+        </header>
 
-    <div id="conteudo">
-        <ui:insert name="conteudo"></ui:insert>
-    </div>
+        <h2>
+            <ui:insert name="titulo"></ui:insert>
+        </h2>
 
-    <footer>
-        Curso Online "JSF e PrimeFaces Essencial"
-    </footer>
+        <div id="conteudo">
+            <ui:insert name="conteudo"></ui:insert>
+        </div>
+
+        <footer>
+            Curso Online "JSF e PrimeFaces Essencial"
+        </footer>
+    </f:view>
+
 </h:body>
 
 </html>

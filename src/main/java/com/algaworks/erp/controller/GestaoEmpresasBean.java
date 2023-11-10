@@ -22,12 +22,28 @@ public class GestaoEmpresasBean implements Serializable {
 
     private List<Empresa> listaEmpresas;
 
+
+    private String termoPesquisa;
+
+
+    public void listaEmpresaPesquisada(){
+        listaEmpresas = empresas.pesquisar(termoPesquisa);
+    }
+
     public void todasEmpresas() {
        listaEmpresas = empresas.todas();
     }
 
     public List<Empresa> getListaEmpresas() {
         return listaEmpresas;
+    }
+
+    public String getTermoPesquisa() {
+        return termoPesquisa;
+    }
+
+    public void setTermoPesquisa(String termoPesquisa) {
+        this.termoPesquisa = termoPesquisa;
     }
 
 

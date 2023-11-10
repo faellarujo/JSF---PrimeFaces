@@ -40,9 +40,13 @@ public class Empresas implements Serializable {
 
 
     public List<Empresa> pesquisar(String nome) {
-        String jpql = "from Empresa where razaoSocial like :razaoSocial";
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("AlgaWorksPU");
 
-        TypedQuery<Empresa> query = manager
+        EntityManager em = emf.createEntityManager();
+
+        String jpql = "select e from Empresa e where razaoSocial like :razaoSocial";
+
+        TypedQuery<Empresa> query = em
                 .createQuery(jpql, Empresa.class);
 
         query.setParameter("razaoSocial", nome + "%");
