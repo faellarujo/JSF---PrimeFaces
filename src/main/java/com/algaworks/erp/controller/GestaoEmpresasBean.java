@@ -2,6 +2,7 @@ package com.algaworks.erp.controller;
 
 import com.algaworks.erp.model.Empresa;
 import com.algaworks.erp.repository.Empresas;
+import com.algaworks.erp.util.FacesMessages;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -19,6 +20,9 @@ public class GestaoEmpresasBean implements Serializable {
     @Inject
     private Empresas empresas;
 
+    @Inject
+    private FacesMessages messages;
+
 
     private List<Empresa> listaEmpresas;
 
@@ -28,6 +32,10 @@ public class GestaoEmpresasBean implements Serializable {
 
     public void listaEmpresaPesquisada(){
         listaEmpresas = empresas.pesquisar(termoPesquisa);
+
+        if (listaEmpresas.isEmpty()) {
+            messages.info();
+        }
     }
 
     public void todasEmpresas() {
