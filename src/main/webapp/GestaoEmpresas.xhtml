@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-        template="WEB-INF/Template/Layout.xhtml">
+      template="WEB-INF/Template/Layout.xhtml">
 
 
 
@@ -17,6 +17,8 @@
         </f:view>
 
     <h:head>
+
+        <link rel="stylesheet" type="text/css" href="resources/algaworks/arquivoold.css" />
         ...
     </h:head>
 
@@ -108,48 +110,6 @@
                       modal="true"
                       resizable="false"
                       closeOnEscape="true">
-                <!--<p:panelGrid columns="2">-->
-
-                   <!--     <p:outputLabel value="Razão Social:" for="razaoSocial"></p:outputLabel>
-
-                    <p:inputText id="razaoSocial" size="80" maxlength="120"></p:inputText>
--->
-
-                  <!--  <p:outputLabel value="Tipo empresa: " for="tipo"></p:outputLabel>
-                    <p:selectOneMenu id="tipo">
-                        <f:selectItem itemLabel="Selecione..."></f:selectItem>
-                        <f:selectItems value="#{gestaoEmpresasBean.todasEmpresas()}"
-                                       var="tipoEmpresa" itemLabel="#{tipoEpresa.descricao}"
-                                        itemValue="#{tipoEmpresa}"></f:selectItems>
-                    </p:selectOneMenu>
-
-                    <p:outputLabel value="CNPJ: " for="cnpj"></p:outputLabel>
-                    <p:inputMask id="cnpj" mask="99.999.999/9999-99" size="18" maxlength="18"></p:inputMask>
-
-                    <p:outputLabel value="Data Fundação" for="dataFundação"></p:outputLabel>
-
-                    <p:calendar id="dataFundação" pattern="dd/MM/YYYY" size="30"></p:calendar>
-
-                    <p:outputLabel value="Ramo Atividade: " for="ramoAtividade"></p:outputLabel>
-                    <p:autoComplete id="ramoAtividade" size="80"></p:autoComplete>
-
-                    <h:outputLabel></h:outputLabel>
-
-                    <p:commandButton value="Salvar"></p:commandButton>-->
-
-
-                <style>
-                    /* reset on the showcase style*/
-                    body .ui-panelgrid .ui-panelgrid-cell {
-                        background-color: transparent;
-                    }
-
-                    /* example use of styles for your form */
-                    .my-heading-row {
-                        background-color: var(--surface-c);
-                        font-weight: bold;
-                    }
-                </style>
 
                 <p:panelGrid columns="2"
                              columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
@@ -182,7 +142,14 @@
                     <p:datePicker id="date" showIcon="true" style="width:auto"/>
 
                     <p:outputLabel value="Ramo Atividade: " for="ramoAtividade"></p:outputLabel>
-                    <p:autoComplete id="ramoAtividade" size="80"></p:autoComplete>
+                    <p:autoComplete id="ramoAtividade" size="80"
+                        completeMethod="#{gestaoEmpresasBean.completarRamoAtividade}"
+                        converter="#{gestaoEmpresasBean.ramoAtividadeConverter}"
+                                    var="ramoAtividade"
+                                    itemLabel="#{ramoAtividade.descricao}"
+                                    itemValue="#{ramoAtividade}"
+
+                    ></p:autoComplete>
 
                     <h:outputLabel></h:outputLabel>
 

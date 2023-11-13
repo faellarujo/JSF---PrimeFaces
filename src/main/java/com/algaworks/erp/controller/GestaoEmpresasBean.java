@@ -1,9 +1,12 @@
 package com.algaworks.erp.controller;
 
 import com.algaworks.erp.model.Empresa;
+import com.algaworks.erp.model.RamoAtividade;
 import com.algaworks.erp.model.TipoEmpresa;
 import com.algaworks.erp.repository.Empresas;
+import com.algaworks.erp.repository.RamoAtividades;
 import com.algaworks.erp.util.FacesMessages;
+import jakarta.faces.convert.Converter;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -24,11 +27,16 @@ public class GestaoEmpresasBean implements Serializable {
     @Inject
     private FacesMessages messages;
 
+    @Inject
+    private RamoAtividades ramoAtividades;
+
 
     private List<Empresa> listaEmpresas;
 
 
     private String termoPesquisa;
+
+    private Converter ramoAtividadeConverter;
 
 
     public void listaEmpresaPesquisada(){
@@ -59,6 +67,13 @@ public class GestaoEmpresasBean implements Serializable {
         return TipoEmpresa.values();
     }
 
+    public List<RamoAtividade> completarRamoAtividade(String termo){
+        List<RamoAtividade> listaRamoAtividades = ramoAtividades.pesquisar(termo);
+        ramoAtividadeConverter = new RamoAtividadeConverter(listaRamoAtividades);
+        return listaRamoAtividades;
+    }
 
-
+    public Converter getRamoAtividadeConverter() {
+        return ramoAtividadeConverter;
+    }
 }
