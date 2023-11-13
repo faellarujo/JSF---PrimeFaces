@@ -104,8 +104,93 @@
 
 
 
-            <p:dialog header="Nova Empresa" widgetVar="EmpresaDialogWidgetVar" modal="true" resizable="false" closeOnEscape="true">
-                <p:commandButton value="Teste"></p:commandButton>
+            <p:dialog header="Nova Empresa" widgetVar="EmpresaDialogWidgetVar"
+                      modal="true"
+                      resizable="false"
+                      closeOnEscape="true">
+                <!--<p:panelGrid columns="2">-->
+
+                   <!--     <p:outputLabel value="Razão Social:" for="razaoSocial"></p:outputLabel>
+
+                    <p:inputText id="razaoSocial" size="80" maxlength="120"></p:inputText>
+-->
+
+                  <!--  <p:outputLabel value="Tipo empresa: " for="tipo"></p:outputLabel>
+                    <p:selectOneMenu id="tipo">
+                        <f:selectItem itemLabel="Selecione..."></f:selectItem>
+                        <f:selectItems value="#{gestaoEmpresasBean.todasEmpresas()}"
+                                       var="tipoEmpresa" itemLabel="#{tipoEpresa.descricao}"
+                                        itemValue="#{tipoEmpresa}"></f:selectItems>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="CNPJ: " for="cnpj"></p:outputLabel>
+                    <p:inputMask id="cnpj" mask="99.999.999/9999-99" size="18" maxlength="18"></p:inputMask>
+
+                    <p:outputLabel value="Data Fundação" for="dataFundação"></p:outputLabel>
+
+                    <p:calendar id="dataFundação" pattern="dd/MM/YYYY" size="30"></p:calendar>
+
+                    <p:outputLabel value="Ramo Atividade: " for="ramoAtividade"></p:outputLabel>
+                    <p:autoComplete id="ramoAtividade" size="80"></p:autoComplete>
+
+                    <h:outputLabel></h:outputLabel>
+
+                    <p:commandButton value="Salvar"></p:commandButton>-->
+
+
+                <style>
+                    /* reset on the showcase style*/
+                    body .ui-panelgrid .ui-panelgrid-cell {
+                        background-color: transparent;
+                    }
+
+                    /* example use of styles for your form */
+                    .my-heading-row {
+                        background-color: var(--surface-c);
+                        font-weight: bold;
+                    }
+                </style>
+
+                <p:panelGrid columns="2"
+                             columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+                             layout="grid"
+                             styleClass="ui-panelgrid-blank ui-fluid"
+                             style="border:0px none; background-color:transparent;">
+
+
+                    <p:outputLabel value="Razão Social:" for="razaoSocial"/>
+                    <p:inputText id="razaoSocial" size="80" maxlength="120"></p:inputText>
+
+
+                    <p:outputLabel value="Nome fantasia:" for="nomeFantasia"/>
+                    <p:inputText id="nomeFantasia" size="80" maxlength="120"></p:inputText>
+
+                    <p:outputLabel value="Tipo de Empresa:" for="tipo"/>
+                    <p:selectOneMenu id="tipo">
+                        <f:selectItem itemLabel="Selecione..."></f:selectItem>
+                        <f:selectItems value="#{gestaoEmpresasBean.tipoEmpresa}"
+                                       var="tipoEmpresa"
+                                       itemLabel="#{tipoEpresa.descricao}"
+                                       itemValue="#{tipoEmpresa}"></f:selectItems>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="CNPJ: " for="cnpj"></p:outputLabel>
+                    <p:inputMask id="cnpj" mask="99.999.999/9999-99" size="18" maxlength="18"></p:inputMask>
+
+
+                    <p:outputLabel value="Data Fundação" for="date"></p:outputLabel>
+                    <p:datePicker id="date" showIcon="true" style="width:auto"/>
+
+                    <p:outputLabel value="Ramo Atividade: " for="ramoAtividade"></p:outputLabel>
+                    <p:autoComplete id="ramoAtividade" size="80"></p:autoComplete>
+
+                    <h:outputLabel></h:outputLabel>
+
+                    <p:commandButton type="button" value="Salvar" title="Delete" icon="pi pi-save" styleClass="rounded-button" style="margin-right: 10px"/>
+
+
+
+                </p:panelGrid>
             </p:dialog>
         </h:form>
     </div>
@@ -113,4 +198,6 @@
 </ui:define>
 
 </ui:composition>
+
+
 

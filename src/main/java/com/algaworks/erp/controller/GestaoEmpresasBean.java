@@ -1,6 +1,7 @@
 package com.algaworks.erp.controller;
 
 import com.algaworks.erp.model.Empresa;
+import com.algaworks.erp.model.TipoEmpresa;
 import com.algaworks.erp.repository.Empresas;
 import com.algaworks.erp.util.FacesMessages;
 import jakarta.faces.view.ViewScoped;
@@ -52,6 +53,10 @@ public class GestaoEmpresasBean implements Serializable {
 
     public void setTermoPesquisa(String termoPesquisa) {
         this.termoPesquisa = termoPesquisa;
+    }
+
+    public TipoEmpresa[] getTipoEmpresa(){
+        return TipoEmpresa.values();
     }
 
 
