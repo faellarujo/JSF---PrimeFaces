@@ -5,11 +5,13 @@ import com.algaworks.erp.model.RamoAtividade;
 import com.algaworks.erp.model.TipoEmpresa;
 import com.algaworks.erp.repository.Empresas;
 import com.algaworks.erp.repository.RamoAtividades;
+import com.algaworks.erp.service.CadastroEmpresaService;
 import com.algaworks.erp.util.FacesMessages;
 import jakarta.faces.convert.Converter;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -25,30 +27,70 @@ public class GestaoEmpresasBean implements Serializable {
     private Empresas empresas;
 
     @Inject
+    private CadastroEmpresaService cadastroEmpresaService;
+
+    @Inject
     private FacesMessages messages;
 
     @Inject
     private RamoAtividades ramoAtividades;
 
-
     private List<Empresa> listaEmpresas;
-
 
     private String termoPesquisa;
 
     private Converter ramoAtividadeConverter;
 
 
-    public void listaEmpresaPesquisada(){
+    private Empresa empresa = new Empresa();
+
+    public void prepararNovaEmpresa() {
+        empresa = new Empresa();
+    }
+
+    public void salvar() {
+
+        cadastroEmpresaService.salvar(empresa);
+
+        if (jaHouvePesquisa()) {
+            pesquisar();
+        }
+        messages.CadastroRealizadoComSucesso();
+    }
+
+    public Empresa getEmpresa() {
+        return this.empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+
+    public boolean jaHouvePesquisa() {
+        return termoPesquisa != null && !"".equals(termoPesquisa);
+    }
+
+
+    public void pesquisar() {
         listaEmpresas = empresas.pesquisar(termoPesquisa);
 
         if (listaEmpresas.isEmpty()) {
-            messages.info();
+            messages.infoNaoRetornouRegistros();
+        }
+    }
+
+
+    public void listaEmpresaPesquisada() {
+        listaEmpresas = empresas.pesquisar(termoPesquisa);
+
+        if (listaEmpresas.isEmpty()) {
+            messages.infoNaoRetornouRegistros();
         }
     }
 
     public void todasEmpresas() {
-       listaEmpresas = empresas.todas();
+        listaEmpresas = empresas.todas();
     }
 
     public List<Empresa> getListaEmpresas() {
@@ -63,11 +105,11 @@ public class GestaoEmpresasBean implements Serializable {
         this.termoPesquisa = termoPesquisa;
     }
 
-    public TipoEmpresa[] getTipoEmpresa(){
+    public TipoEmpresa[] getTipoEmpresa() {
         return TipoEmpresa.values();
     }
 
-    public List<RamoAtividade> completarRamoAtividade(String termo){
+    public List<RamoAtividade> completarRamoAtividade(String termo) {
         List<RamoAtividade> listaRamoAtividades = ramoAtividades.pesquisar(termo);
         ramoAtividadeConverter = new RamoAtividadeConverter(listaRamoAtividades);
         return listaRamoAtividades;

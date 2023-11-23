@@ -8,6 +8,7 @@ import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 
 @Named
@@ -28,6 +29,7 @@ public class RamoAtividadeConverter implements Converter {
             return null;
         }
 
+
         Long id = Long.valueOf(value);
 
         for (RamoAtividade ramoAtividade : listaRamoAtividade) {
@@ -44,6 +46,6 @@ public class RamoAtividadeConverter implements Converter {
             return null;
         }
         RamoAtividade ramoAtividade = (RamoAtividade) value;
-        return ramoAtividade.getDescricao().toString();
+        return  Long.toString(ramoAtividade.getId());
     }
 }

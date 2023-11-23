@@ -20,11 +20,15 @@ public class FacesMessages implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, facesMessage);
     }
 
-   /* public void info(String msg){
+   public void ParametroMMSG(String msg){
         add(msg, FacesMessage.SEVERITY_INFO);
-    }*/
+    }
 
-    public void info() {
+    public void infoNaoRetornouRegistros() {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Sua consulta não retornou registros"));
+    }
+
+    public void CadastroRealizadoComSucesso() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Empresa cadastrado com sucesso"));
     }
 }
