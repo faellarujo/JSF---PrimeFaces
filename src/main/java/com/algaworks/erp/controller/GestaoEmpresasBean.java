@@ -7,10 +7,13 @@ import com.algaworks.erp.repository.Empresas;
 import com.algaworks.erp.repository.RamoAtividades;
 import com.algaworks.erp.service.CadastroEmpresaService;
 import com.algaworks.erp.util.FacesMessages;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import org.primefaces.event.SelectEvent;
 
 import java.io.Serializable;
 import java.util.List;
@@ -31,6 +34,17 @@ public class GestaoEmpresasBean implements Serializable {
 
     @Inject
     private FacesMessages messages;
+
+
+    public Empresa getSelectEmpresa() {
+        return selectEmpresa;
+    }
+
+    public void setSelectEmpresa(Empresa selectEmpresa) {
+        this.selectEmpresa = selectEmpresa;
+    }
+
+    private Empresa selectEmpresa;
 
     @Inject
     private RamoAtividades ramoAtividades;
@@ -113,6 +127,12 @@ public class GestaoEmpresasBean implements Serializable {
         List<RamoAtividade> listaRamoAtividades = ramoAtividades.pesquisar(termo);
         ramoAtividadeConverter = new RamoAtividadeConverter(listaRamoAtividades);
         return listaRamoAtividades;
+    }
+
+
+    public void onRowSelect(SelectEvent<Empresa> empresa) {
+        FacesMessage msg = new FacesMessage("Empresa Selected", String.valueOf(empresa.getObject().getId()));
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public Converter getRamoAtividadeConverter() {

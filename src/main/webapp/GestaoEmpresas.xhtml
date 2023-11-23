@@ -81,7 +81,9 @@
             <p:dataTable id="empresasDataTable" value="#{gestaoEmpresasBean.listaEmpresas}"
                          var="empresa" emptyMessage="Nenhuma Inforação a ser exibida"
                          paginator="true" rows="10" paginatorPosition="bottom"
-                         styleClass="minha-tabela">
+                         styleClass="minha-tabela"
+                         selectionMode="single"
+                         selection="#{gestaoEmpresasBean.selectEmpresa}" rowKey="#{gestaoEmpresasBean.empresa.id}">
                 <p:column headerText="Razão Social" sortBy="#{empresa.razaoSocial}" >
                     <h:outputText value="#{empresa.razaoSocial}"></h:outputText>
                 </p:column>
