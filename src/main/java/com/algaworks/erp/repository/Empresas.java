@@ -73,7 +73,18 @@ public class Empresas implements Serializable {
 
 
     public Empresa guardar(Empresa empresa) {
-        return manager.merge(empresa);
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("AlgaWorksPU");
+
+        EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+        em.persist(empresa);
+
+        em.getTransaction().commit();
+
+        return empresa;
     }
 
     public void remover(Empresa empresa) {

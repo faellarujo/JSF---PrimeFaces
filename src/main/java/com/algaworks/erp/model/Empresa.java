@@ -1,5 +1,6 @@
 package com.algaworks.erp.model;
 
+import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import jakarta.persistence.*;
 
@@ -7,6 +8,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
+
+
+
 
 @Entity
 @Table(name = "empresa")
