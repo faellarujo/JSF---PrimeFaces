@@ -68,6 +68,8 @@ public class GestaoEmpresasBean implements Serializable {
 
         if (jaHouvePesquisa()) {
             pesquisar();
+        } else {
+            todasEmpresas();
         }
         messages.CadastroRealizadoComSucesso();
     }
@@ -130,12 +132,37 @@ public class GestaoEmpresasBean implements Serializable {
     }
 
 
-    public void onRowSelect(SelectEvent<Empresa> empresa) {
-        FacesMessage msg = new FacesMessage("Empresa Selected", String.valueOf(empresa.getObject().getId()));
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+    public boolean onRowSelect(SelectEvent<Empresa> event) {
+        Empresa selecionado = (Empresa) event.getObject();
+
+        if (selecionado.getId() != null){
+            return  isEmpresaSeleciona();
+        } else {
+            return isEmpresaDeseleciona();
+        }
+
     }
 
     public Converter getRamoAtividadeConverter() {
         return ramoAtividadeConverter;
+    }
+
+
+    public boolean isEmpresaSeleciona(){
+        if(empresa != null && empresa.getId() != null) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public boolean isEmpresaDeseleciona(){
+        if(empresa != null && empresa.getId() != null) {
+            return false;
+        }
+
+        return true;
+
     }
 }
