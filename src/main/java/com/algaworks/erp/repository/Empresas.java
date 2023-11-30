@@ -78,9 +78,12 @@ public class Empresas implements Serializable {
 
         EntityManager em = emf.createEntityManager();
 
+
         em.getTransaction().begin();
 
-        em.persist(empresa);
+
+        em.merge(empresa);
+
 
         em.getTransaction().commit();
 

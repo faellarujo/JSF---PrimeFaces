@@ -7,8 +7,6 @@ import com.algaworks.erp.repository.Empresas;
 import com.algaworks.erp.repository.RamoAtividades;
 import com.algaworks.erp.service.CadastroEmpresaService;
 import com.algaworks.erp.util.FacesMessages;
-import jakarta.faces.application.FacesMessage;
-import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
@@ -16,6 +14,8 @@ import jakarta.inject.Named;
 import org.primefaces.event.SelectEvent;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -62,6 +62,10 @@ public class GestaoEmpresasBean implements Serializable {
         empresa = new Empresa();
     }
 
+    public void prepararEdicao(){
+        RamoAtividadeConverter ramoAtividadeConverter = new RamoAtividadeConverter(Arrays.asList(empresa.getRamoAtividade()));
+    }
+
     public void salvar() {
 
         cadastroEmpresaService.salvar(empresa);
@@ -75,7 +79,7 @@ public class GestaoEmpresasBean implements Serializable {
     }
 
     public Empresa getEmpresa() {
-        return this.empresa;
+            return this.empresa = empresa;
     }
 
     public void setEmpresa(Empresa empresa) {
